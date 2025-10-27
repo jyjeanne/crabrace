@@ -7,7 +7,7 @@ authors = ["Crabrace Contributors"]
 description = "High-performance HTTP-based AI provider database service written in Rust"
 readme = "README.md"
 license = "MIT"
-repository = "https://github.com/your-org/crabrace"
+repository = "https://github.com/jyjeanne/crabrace"
 keywords = ["ai", "llm", "provider", "api", "http"]
 categories = ["web-programming::http-server"]
 
