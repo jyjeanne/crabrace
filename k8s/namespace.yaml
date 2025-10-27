@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: crabrace
+  labels:
+    name: crabrace
+    app.kubernetes.io/name: crabrace
+    app.kubernetes.io/component: api

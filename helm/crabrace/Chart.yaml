@@ -1,0 +1,17 @@
+apiVersion: v2
+name: crabrace
+description: A Helm chart for Crabrace - AI Provider Database
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+keywords:
+  - ai
+  - llm
+  - provider
+  - api
+maintainers:
+  - name: Crabrace Contributors
+    email: crabrace@yourdomain.com
+home: https://github.com/jyjeanne/crabrace
+sources:
+  - https://github.com/jyjeanne/crabrace

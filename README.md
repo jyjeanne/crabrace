@@ -73,6 +73,7 @@ curl http://localhost:8080/metrics
 - **[Configuration Guide](CONFIGURATION.md)** - Complete configuration reference
 - **[Security Guide](SECURITY.md)** - Security features and best practices
 - **[Docker Deployment](DOCKER_DEPLOYMENT.md)** - Complete Docker guide
+- **[Kubernetes Deployment](KUBERNETES.md)** - Kubernetes deployment guide
 - **[Build Workaround](BUILD_WORKAROUND.md)** - Fix Windows build issues
 - **[Full Specification](docs/CRABRACE_SPECIFICATION.md)** - Complete technical specification
 - **[Metrics Guide](METRICS.md)** - Prometheus metrics documentation
@@ -392,11 +393,11 @@ MIT License - see [LICENSE](LICENSE) for details
 ## 📊 Status
 
 - **Version:** 0.1.0 (Release Candidate)
-- **Status:** Phase 4 Nearly Complete - Production Features
+- **Status:** Phase 4 Complete - Production Ready
 - **API Compatibility:** 100% with Catwalk ✅
 - **Providers:** 16 of 16 (100%) ✅
 - **Models:** 341+ models across all providers
-- **Production Ready:** Docker ✅ | Config ✅ | Security ✅
+- **Production Ready:** Docker ✅ | Config ✅ | Security ✅ | K8s ✅
 
 ### Progress
 
@@ -405,7 +406,7 @@ MIT License - see [LICENSE](LICENSE) for details
 | Phase 1: Data Model | ✅ Complete | 100% |
 | Phase 2: Infrastructure | ✅ Complete | 100% |
 | Phase 3: Providers | ✅ Complete | 100% |
-| Phase 4: Production | 🔄 In Progress | 80% |
+| Phase 4: Production | ✅ Complete | 100% |
 
 ### Phase 4: Production Readiness
 
@@ -414,8 +415,8 @@ MIT License - see [LICENSE](LICENSE) for details
 | Docker Support | ✅ Complete | Multi-stage builds, docker-compose |
 | Configuration Management | ✅ Complete | Env vars, TOML, validation |
 | Security Hardening | ✅ Complete | CORS, rate limiting, security headers |
-| Kubernetes Manifests | ⏳ Planned | Deployment, Service, Ingress |
-| Performance Testing | ⏳ Planned | Load tests, benchmarks |
+| Kubernetes Manifests | ✅ Complete | kubectl, Kustomize, Helm charts |
+| Performance Testing | ⏳ Optional | Load tests, benchmarks |
 
 ---
 

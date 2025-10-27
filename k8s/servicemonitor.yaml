@@ -1,0 +1,19 @@
+# ServiceMonitor for Prometheus Operator
+# Only apply if using Prometheus Operator
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: crabrace
+  namespace: crabrace
+  labels:
+    app: crabrace
+    release: prometheus
+spec:
+  selector:
+    matchLabels:
+      app: crabrace
+  endpoints:
+  - port: http
+    path: /metrics
+    interval: 30s
+    scrapeTimeout: 10s

@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+namespace: crabrace
+
+resources:
+  - namespace.yaml
+  - configmap.yaml
+  - deployment.yaml
+  - service.yaml
+  - ingress.yaml
+  - hpa.yaml
+  - poddisruptionbudget.yaml
+  # - servicemonitor.yaml  # Uncomment if using Prometheus Operator
+
+commonLabels:
+  app.kubernetes.io/name: crabrace
+  app.kubernetes.io/managed-by: kustomize
+
+images:
+  - name: crabrace
+    newName: ghcr.io/yourusername/crabrace
+    newTag: latest

@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: crabrace-config
+  namespace: crabrace
+  labels:
+    app: crabrace
+data:
+  # Server Configuration
+  CRABRACE_SERVER__HOST: "0.0.0.0"
+  CRABRACE_SERVER__PORT: "8080"
+  CRABRACE_SERVER__COMPRESSION: "true"
+  CRABRACE_SERVER__TIMEOUT_SECONDS: "30"
+
+  # Logging Configuration
+  CRABRACE_LOGGING__LEVEL: "info"
+  CRABRACE_LOGGING__JSON_FORMAT: "true"
+  CRABRACE_LOGGING__SHOW_TARGET: "false"
+
+  # Metrics Configuration
+  CRABRACE_METRICS__ENABLED: "true"
+  CRABRACE_METRICS__PATH: "/metrics"
+
+  # Security - CORS Configuration
+  CRABRACE_SECURITY__CORS__ENABLED: "true"
+  CRABRACE_SECURITY__CORS__ALLOWED_ORIGINS: '["*"]'
+  CRABRACE_SECURITY__CORS__ALLOWED_METHODS: '["GET","POST","OPTIONS"]'
+  CRABRACE_SECURITY__CORS__ALLOWED_HEADERS: '["Content-Type","Authorization"]'
+  CRABRACE_SECURITY__CORS__MAX_AGE_SECONDS: "3600"
+
+  # Security - Rate Limiting Configuration
+  CRABRACE_SECURITY__RATE_LIMIT__ENABLED: "true"
+  CRABRACE_SECURITY__RATE_LIMIT__REQUESTS_PER_PERIOD: "1000"
+  CRABRACE_SECURITY__RATE_LIMIT__PERIOD_SECONDS: "60"
+
+  # Security - Headers Configuration
+  CRABRACE_SECURITY__HEADERS__ENABLED: "true"
+  CRABRACE_SECURITY__HEADERS__HSTS: "true"
+  CRABRACE_SECURITY__HEADERS__CONTENT_TYPE_OPTIONS: "true"
+  CRABRACE_SECURITY__HEADERS__FRAME_OPTIONS: "true"
+  CRABRACE_SECURITY__HEADERS__XSS_PROTECTION: "true"
