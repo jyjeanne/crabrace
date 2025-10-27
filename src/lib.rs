@@ -29,10 +29,12 @@
 //! }
 //! ```
 
+pub mod config;
 pub mod metrics;
 pub mod models;
 pub mod providers;
 
+pub use config::Config;
 pub use models::provider::{Model, Provider};
 
 use anyhow::Result;

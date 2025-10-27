@@ -1,0 +1,32 @@
+# Crabrace Configuration File Example
+# Copy this file to config.toml and customize as needed
+
+[server]
+# Host to bind to (default: "0.0.0.0")
+host = "0.0.0.0"
+
+# Port to bind to (default: 8080)
+port = 8080
+
+# Enable HTTP compression (default: true)
+compression = true
+
+# Request timeout in seconds (default: 30)
+timeout_seconds = 30
+
+[logging]
+# Log level: trace, debug, info, warn, error (default: "info")
+level = "info"
+
+# Use JSON format for structured logging (default: false)
+json_format = false
+
+# Show target (module path) in logs (default: false)
+show_target = false
+
+[metrics]
+# Enable Prometheus metrics endpoint (default: true)
+enabled = true
+
+# Metrics endpoint path (default: "/metrics")
+path = "/metrics"

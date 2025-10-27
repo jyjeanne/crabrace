@@ -68,6 +68,7 @@ curl http://localhost:8080/metrics
 ## 📚 Documentation
 
 - **[Quick Start](QUICK_START.md)** - Get started quickly
+- **[Configuration Guide](CONFIGURATION.md)** - Complete configuration reference
 - **[Docker Deployment](DOCKER_DEPLOYMENT.md)** - Complete Docker guide
 - **[Build Workaround](BUILD_WORKAROUND.md)** - Fix Windows build issues
 - **[Full Specification](docs/CRABRACE_SPECIFICATION.md)** - Complete technical specification

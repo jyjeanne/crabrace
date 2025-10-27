@@ -1,0 +1,16 @@
+# Crabrace Production Configuration
+
+[server]
+host = "0.0.0.0"
+port = 8080
+compression = true
+timeout_seconds = 60
+
+[logging]
+level = "warn"
+json_format = true
+show_target = true
+
+[metrics]
+enabled = true
+path = "/metrics"
