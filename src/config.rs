@@ -194,7 +194,6 @@ fn default_rate_limit_period() -> u64 {
     60
 }
 
-
 impl Default for ServerConfig {
     fn default() -> Self {
         Self {
@@ -224,7 +223,6 @@ impl Default for MetricsConfig {
         }
     }
 }
-
 
 impl Default for CorsConfig {
     fn default() -> Self {
