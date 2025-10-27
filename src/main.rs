@@ -15,7 +15,7 @@ use tower_http::{
 };
 use tracing::info;
 
-use crabrace::{metrics, providers::registry::ProviderRegistry, Config};
+use crabrace::{metrics, providers::registry::ProviderRegistry, security, Config};
 
 /// Application state shared across handlers
 #[derive(Clone)]
@@ -78,6 +78,36 @@ async fn main() -> Result<()> {
             TraceLayer::new_for_http()
                 .make_span_with(DefaultMakeSpan::new().level(config.tracing_level())),
         );
+
+    // Add security middleware layers
+
+    // CORS
+    if let Some(cors_layer) = security::build_cors_layer(&config.security.cors) {
+        app = app.layer(cors_layer);
+        info!(
+            "CORS enabled: origins={:?}",
+            config.security.cors.allowed_origins
+        );
+    }
+
+    // Rate limiting
+    if let Some(rate_limit_layer) = security::build_rate_limit_layer(&config.security.rate_limit) {
+        app = app.layer(rate_limit_layer);
+        info!(
+            "Rate limiting enabled: {} requests per {} seconds",
+            config.security.rate_limit.requests_per_period,
+            config.security.rate_limit.period_seconds
+        );
+    }
+
+    // Security headers
+    let security_headers = security::build_security_headers_layers(&config.security.headers);
+    if !security_headers.is_empty() {
+        for layer in security_headers {
+            app = app.layer(layer);
+        }
+        info!("Security headers enabled");
+    }
 
     // Add compression if enabled
     if config.server.compression {

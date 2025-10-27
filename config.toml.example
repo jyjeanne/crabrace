@@ -30,3 +30,45 @@ enabled = true
 
 # Metrics endpoint path (default: "/metrics")
 path = "/metrics"
+
+[security.cors]
+# Enable CORS (default: true)
+enabled = true
+
+# Allowed origins (use ["*"] for any origin)
+allowed_origins = ["*"]
+
+# Allowed HTTP methods
+allowed_methods = ["GET", "POST", "OPTIONS"]
+
+# Allowed headers
+allowed_headers = ["Content-Type", "Authorization"]
+
+# Max age for CORS preflight cache in seconds (default: 3600)
+max_age_seconds = 3600
+
+[security.rate_limit]
+# Enable rate limiting (default: true)
+enabled = true
+
+# Number of requests allowed per period (default: 100)
+requests_per_period = 100
+
+# Period in seconds (default: 60)
+period_seconds = 60
+
+[security.headers]
+# Enable security headers (default: true)
+enabled = true
+
+# Enable HSTS (HTTP Strict Transport Security)
+hsts = true
+
+# Enable X-Content-Type-Options: nosniff
+content_type_options = true
+
+# Enable X-Frame-Options: DENY
+frame_options = true
+
+# Enable X-XSS-Protection: 1; mode=block
+xss_protection = true

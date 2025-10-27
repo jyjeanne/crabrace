@@ -33,6 +33,7 @@ pub mod config;
 pub mod metrics;
 pub mod models;
 pub mod providers;
+pub mod security;
 
 pub use config::Config;
 pub use models::provider::{Model, Provider};

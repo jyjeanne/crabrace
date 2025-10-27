@@ -15,6 +15,9 @@ pub struct Config {
 
     /// Metrics configuration
     pub metrics: MetricsConfig,
+
+    /// Security configuration
+    pub security: SecurityConfig,
 }
 
 /// Server configuration
@@ -65,6 +68,83 @@ pub struct MetricsConfig {
     pub path: String,
 }
 
+/// Security configuration
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SecurityConfig {
+    /// CORS configuration
+    pub cors: CorsConfig,
+
+    /// Rate limiting configuration
+    pub rate_limit: RateLimitConfig,
+
+    /// Security headers configuration
+    pub headers: SecurityHeadersConfig,
+}
+
+/// CORS configuration
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct CorsConfig {
+    /// Enable CORS
+    #[serde(default = "default_true")]
+    pub enabled: bool,
+
+    /// Allowed origins (use ["*"] for any origin)
+    #[serde(default = "default_cors_origins")]
+    pub allowed_origins: Vec<String>,
+
+    /// Allowed methods
+    #[serde(default = "default_cors_methods")]
+    pub allowed_methods: Vec<String>,
+
+    /// Allowed headers
+    #[serde(default = "default_cors_headers")]
+    pub allowed_headers: Vec<String>,
+
+    /// Max age in seconds
+    #[serde(default = "default_cors_max_age")]
+    pub max_age_seconds: u64,
+}
+
+/// Rate limiting configuration
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct RateLimitConfig {
+    /// Enable rate limiting
+    #[serde(default = "default_true")]
+    pub enabled: bool,
+
+    /// Requests per period
+    #[serde(default = "default_rate_limit_requests")]
+    pub requests_per_period: u32,
+
+    /// Period in seconds
+    #[serde(default = "default_rate_limit_period")]
+    pub period_seconds: u64,
+}
+
+/// Security headers configuration
+#[derive(Debug, Clone, Serialize, Deserialize)]
+pub struct SecurityHeadersConfig {
+    /// Enable security headers
+    #[serde(default = "default_true")]
+    pub enabled: bool,
+
+    /// Enable HSTS (HTTP Strict Transport Security)
+    #[serde(default = "default_true")]
+    pub hsts: bool,
+
+    /// Enable X-Content-Type-Options: nosniff
+    #[serde(default = "default_true")]
+    pub content_type_options: bool,
+
+    /// Enable X-Frame-Options: DENY
+    #[serde(default = "default_true")]
+    pub frame_options: bool,
+
+    /// Enable X-XSS-Protection: 1; mode=block
+    #[serde(default = "default_true")]
+    pub xss_protection: bool,
+}
+
 // Default value functions
 fn default_host() -> String {
     "0.0.0.0".to_string()
@@ -90,12 +170,44 @@ fn default_metrics_path() -> String {
     "/metrics".to_string()
 }
 
+fn default_cors_origins() -> Vec<String> {
+    vec!["*".to_string()]
+}
+
+fn default_cors_methods() -> Vec<String> {
+    vec![
+        "GET".to_string(),
+        "POST".to_string(),
+        "OPTIONS".to_string(),
+    ]
+}
+
+fn default_cors_headers() -> Vec<String> {
+    vec![
+        "Content-Type".to_string(),
+        "Authorization".to_string(),
+    ]
+}
+
+fn default_cors_max_age() -> u64 {
+    3600
+}
+
+fn default_rate_limit_requests() -> u32 {
+    100
+}
+
+fn default_rate_limit_period() -> u64 {
+    60
+}
+
 impl Default for Config {
     fn default() -> Self {
         Self {
             server: ServerConfig::default(),
             logging: LoggingConfig::default(),
             metrics: MetricsConfig::default(),
+            security: SecurityConfig::default(),
         }
     }
 }
@@ -126,6 +238,50 @@ impl Default for MetricsConfig {
         Self {
             enabled: default_true(),
             path: default_metrics_path(),
+        }
+    }
+}
+
+impl Default for SecurityConfig {
+    fn default() -> Self {
+        Self {
+            cors: CorsConfig::default(),
+            rate_limit: RateLimitConfig::default(),
+            headers: SecurityHeadersConfig::default(),
+        }
+    }
+}
+
+impl Default for CorsConfig {
+    fn default() -> Self {
+        Self {
+            enabled: default_true(),
+            allowed_origins: default_cors_origins(),
+            allowed_methods: default_cors_methods(),
+            allowed_headers: default_cors_headers(),
+            max_age_seconds: default_cors_max_age(),
+        }
+    }
+}
+
+impl Default for RateLimitConfig {
+    fn default() -> Self {
+        Self {
+            enabled: default_true(),
+            requests_per_period: default_rate_limit_requests(),
+            period_seconds: default_rate_limit_period(),
+        }
+    }
+}
+
+impl Default for SecurityHeadersConfig {
+    fn default() -> Self {
+        Self {
+            enabled: default_true(),
+            hsts: default_true(),
+            content_type_options: default_true(),
+            frame_options: default_true(),
+            xss_protection: default_true(),
         }
     }
 }

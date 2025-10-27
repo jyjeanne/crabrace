@@ -14,3 +14,22 @@ show_target = true
 [metrics]
 enabled = true
 path = "/metrics"
+
+[security.cors]
+enabled = true
+allowed_origins = ["https://yourdomain.com"]
+allowed_methods = ["GET", "POST", "OPTIONS"]
+allowed_headers = ["Content-Type", "Authorization"]
+max_age_seconds = 7200
+
+[security.rate_limit]
+enabled = true
+requests_per_period = 1000
+period_seconds = 60
+
+[security.headers]
+enabled = true
+hsts = true
+content_type_options = true
+frame_options = true
+xss_protection = true
