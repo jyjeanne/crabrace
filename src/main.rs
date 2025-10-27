@@ -8,7 +8,6 @@ use axum::{
 };
 use prometheus::{Encoder, TextEncoder};
 use std::sync::Arc;
-use tokio::signal;
 use tower_http::{
     compression::CompressionLayer,
     trace::{DefaultMakeSpan, TraceLayer},
@@ -21,7 +20,6 @@ use crabrace::{metrics, providers::registry::ProviderRegistry, security, Config}
 #[derive(Clone)]
 struct AppState {
     registry: Arc<ProviderRegistry>,
-    config: Arc<Config>,
 }
 
 #[tokio::main]
@@ -58,11 +56,7 @@ async fn main() -> Result<()> {
         registry.model_count()
     );
 
-    let config_arc = Arc::new(config.clone());
-    let state = AppState {
-        registry,
-        config: config_arc,
-    };
+    let state = AppState { registry };
 
     // Build application routes
     let mut app = Router::new()
@@ -190,35 +184,4 @@ async fn metrics_handler() -> Response {
                 .into_response()
         }
     }
-}
-
-/// Graceful shutdown signal handler
-async fn shutdown_signal() {
-    let ctrl_c = async {
-        signal::ctrl_c()
-            .await
-            .expect("failed to install Ctrl+C handler");
-    };
-
-    #[cfg(unix)]
-    let terminate = async {
-        signal::unix::signal(signal::unix::SignalKind::terminate())
-            .expect("failed to install signal handler")
-            .recv()
-            .await;
-    };
-
-    #[cfg(not(unix))]
-    let terminate = std::future::pending::<()>();
-
-    tokio::select! {
-        _ = ctrl_c => {
-            info!("Received Ctrl+C signal");
-        },
-        _ = terminate => {
-            info!("Received terminate signal");
-        },
-    }
-
-    info!("Shutting down gracefully...");
 }
