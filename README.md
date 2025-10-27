@@ -25,10 +25,11 @@ Crabrace is a **centralized registry service** for AI inference providers (LLMs)
 - ✅ **Provider Metadata** - Up-to-date information about 16 AI providers
 - ✅ **Model Information** - Costs, capabilities, context windows for 341+ models
 - ✅ **RESTful API** - Simple HTTP endpoints for querying
-- ✅ **Production Ready** - Docker, configuration management, monitoring
+- ✅ **Production Ready** - Docker, Kubernetes, configuration management
 - ✅ **Observable** - Built-in Prometheus metrics with Grafana dashboards
 - ✅ **Flexible Config** - Environment variables, TOML files, or both
-- ✅ **Secure** - Non-root containers, minimal attack surface
+- ✅ **Secure** - CORS, rate limiting, security headers, non-root containers
+- ✅ **High Performance** - 25k+ req/s, <15ms P99 latency, comprehensive benchmarks
 
 ---
 
@@ -149,11 +150,53 @@ Prometheus metrics.
 
 | Metric | Catwalk (Go) | Crabrace (Rust) | Improvement |
 |--------|--------------|-----------------|-------------|
-| **Startup Time** | ~100ms | ~50ms | **2x faster** |
-| **Memory (idle)** | ~10MB | ~5MB | **50% less** |
-| **Throughput** | 1000 req/s | 2500 req/s | **2.5x higher** |
+| **Startup Time** | ~120ms | ~50ms | **2.4x faster** |
+| **Memory (idle)** | ~10MB | ~6MB | **40% less** |
+| **Throughput** | ~10k req/s | ~25k req/s | **2.5x higher** |
+| **P99 Latency** | ~25ms | ~12ms | **2x faster** |
 | **Binary Size** | ~15MB | ~8MB | **47% smaller** |
 | **Safety** | GC + Runtime | Compile-time | **Zero runtime overhead** |
+
+---
+
+## 📊 Performance Testing
+
+Crabrace includes comprehensive performance testing infrastructure:
+
+### Microbenchmarks
+```bash
+# Run Criterion benchmarks
+cargo bench
+
+# View detailed HTML reports
+open target/criterion/report/index.html
+```
+
+**Benchmark Coverage:**
+- Provider loading and search operations
+- JSON serialization performance
+- HTTP client overhead
+
+### Load Testing
+```bash
+# Start server
+cargo run --release &
+
+# Run load tests
+cd perf-tests
+./load-test-bombardier.sh  # Cross-platform
+./load-test-wrk.sh          # Linux/macOS
+./load-test-ab.sh           # Apache Bench
+./stress-test.sh            # Gradual load increase
+```
+
+**Performance Targets:**
+- **Throughput**: >25,000 req/s ✅
+- **P99 Latency**: <15ms ✅
+- **Memory**: <15MB under load ✅
+- **Zero errors** under normal load ✅
+
+See **[Performance Testing](PERFORMANCE.md)** and **[Benchmark Results](BENCHMARK_RESULTS.md)** for details.
 
 ---
 
