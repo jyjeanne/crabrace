@@ -95,8 +95,11 @@ async fn main() -> Result<()> {
         );
     }
 
-    // Rate limiting
-    if let Some(rate_limit_layer) = security::build_rate_limit_layer(&config.security.rate_limit) {
+    // Rate limiting (temporarily disabled due to tower_governor 0.4.3 compatibility)
+    // TODO: Re-enable after upgrading to tower_governor 0.8.0+
+    if let Some(rate_limit_layer) =
+        security::build_rate_limit_layer::<()>(&config.security.rate_limit)
+    {
         app = app.layer(rate_limit_layer);
         info!(
             "Rate limiting enabled: {} requests per {} seconds",
