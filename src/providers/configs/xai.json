@@ -1,0 +1,68 @@
+{
+  "name": "xAI",
+  "id": "xai",
+  "type": "openai",
+  "api_key": "$XAI_API_KEY",
+  "api_endpoint": "$XAI_API_ENDPOINT",
+  "default_large_model_id": "grok-2-1212",
+  "default_small_model_id": "grok-2-mini-public",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "grok-2-1212",
+      "name": "Grok 2",
+      "cost_per_1m_in": 2.0,
+      "cost_per_1m_out": 10.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 131072,
+      "default_max_tokens": 32768,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "grok-2-vision-1212",
+      "name": "Grok 2 Vision",
+      "cost_per_1m_in": 2.0,
+      "cost_per_1m_out": 10.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 32768,
+      "default_max_tokens": 16384,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "grok-2-mini-public",
+      "name": "Grok 2 Mini",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 131072,
+      "default_max_tokens": 32768,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "grok-beta",
+      "name": "Grok Beta",
+      "cost_per_1m_in": 5.0,
+      "cost_per_1m_out": 15.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 131072,
+      "default_max_tokens": 32768,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    }
+  ]
+}

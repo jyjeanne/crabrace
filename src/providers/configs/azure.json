@@ -1,0 +1,82 @@
+{
+  "name": "Azure OpenAI",
+  "id": "azure",
+  "type": "azure",
+  "api_key": "$AZURE_OPENAI_API_KEY",
+  "api_endpoint": "$AZURE_OPENAI_ENDPOINT",
+  "default_large_model_id": "gpt-4o",
+  "default_small_model_id": "gpt-4o-mini",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "gpt-4o",
+      "name": "GPT-4o",
+      "cost_per_1m_in": 2.5,
+      "cost_per_1m_out": 10.0,
+      "cost_per_1m_in_cached": 0.25,
+      "cost_per_1m_out_cached": 0.25,
+      "context_window": 128000,
+      "default_max_tokens": 16384,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gpt-4o-mini",
+      "name": "GPT-4o Mini",
+      "cost_per_1m_in": 0.15,
+      "cost_per_1m_out": 0.6,
+      "cost_per_1m_in_cached": 0.015,
+      "cost_per_1m_out_cached": 0.015,
+      "context_window": 128000,
+      "default_max_tokens": 16384,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gpt-4-turbo",
+      "name": "GPT-4 Turbo",
+      "cost_per_1m_in": 10.0,
+      "cost_per_1m_out": 30.0,
+      "cost_per_1m_in_cached": 1.0,
+      "cost_per_1m_out_cached": 1.0,
+      "context_window": 128000,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gpt-4",
+      "name": "GPT-4",
+      "cost_per_1m_in": 30.0,
+      "cost_per_1m_out": 60.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 8192,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "gpt-35-turbo",
+      "name": "GPT-3.5 Turbo",
+      "cost_per_1m_in": 0.5,
+      "cost_per_1m_out": 1.5,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 16385,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    }
+  ]
+}

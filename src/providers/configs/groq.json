@@ -1,0 +1,68 @@
+{
+  "name": "Groq",
+  "id": "groq",
+  "type": "openai",
+  "api_key": "$GROQ_API_KEY",
+  "api_endpoint": "$GROQ_API_ENDPOINT",
+  "default_large_model_id": "llama-3.3-70b-versatile",
+  "default_small_model_id": "llama-3.1-8b-instant",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "llama-3.3-70b-versatile",
+      "name": "Llama 3.3 70B Versatile",
+      "cost_per_1m_in": 0.59,
+      "cost_per_1m_out": 0.79,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 128000,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "llama-3.1-70b-versatile",
+      "name": "Llama 3.1 70B Versatile",
+      "cost_per_1m_in": 0.59,
+      "cost_per_1m_out": 0.79,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 131072,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "llama-3.1-8b-instant",
+      "name": "Llama 3.1 8B Instant",
+      "cost_per_1m_in": 0.05,
+      "cost_per_1m_out": 0.08,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 131072,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "mixtral-8x7b-32768",
+      "name": "Mixtral 8x7B",
+      "cost_per_1m_in": 0.24,
+      "cost_per_1m_out": 0.24,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 32768,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    }
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "name": "Google Gemini",
+  "id": "gemini",
+  "type": "gemini",
+  "api_key": "$GEMINI_API_KEY",
+  "api_endpoint": "$GEMINI_API_ENDPOINT",
+  "default_large_model_id": "gemini-2.0-flash-exp",
+  "default_small_model_id": "gemini-1.5-flash-8b",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "gemini-2.0-flash-exp",
+      "name": "Gemini 2.0 Flash",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": null,
+      "cost_per_1m_out_cached": null,
+      "context_window": 1048576,
+      "default_max_tokens": 8192,
+      "can_reason": true,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gemini-1.5-pro",
+      "name": "Gemini 1.5 Pro",
+      "cost_per_1m_in": 1.25,
+      "cost_per_1m_out": 5.0,
+      "cost_per_1m_in_cached": 0.3125,
+      "cost_per_1m_out_cached": 1.25,
+      "context_window": 2097152,
+      "default_max_tokens": 8192,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gemini-1.5-flash",
+      "name": "Gemini 1.5 Flash",
+      "cost_per_1m_in": 0.075,
+      "cost_per_1m_out": 0.3,
+      "cost_per_1m_in_cached": 0.01875,
+      "cost_per_1m_out_cached": 0.075,
+      "context_window": 1048576,
+      "default_max_tokens": 8192,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    },
+    {
+      "id": "gemini-1.5-flash-8b",
+      "name": "Gemini 1.5 Flash 8B",
+      "cost_per_1m_in": 0.0375,
+      "cost_per_1m_out": 0.15,
+      "cost_per_1m_in_cached": 0.01,
+      "cost_per_1m_out_cached": 0.04,
+      "context_window": 1048576,
+      "default_max_tokens": 8192,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": true
+    }
+  ]
+}

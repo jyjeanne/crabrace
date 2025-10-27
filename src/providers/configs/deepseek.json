@@ -1,0 +1,54 @@
+{
+  "name": "DeepSeek",
+  "id": "deepseek",
+  "type": "openai",
+  "api_key": "$DEEPSEEK_API_KEY",
+  "api_endpoint": "$DEEPSEEK_API_ENDPOINT",
+  "default_large_model_id": "deepseek-reasoner",
+  "default_small_model_id": "deepseek-chat",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "deepseek-reasoner",
+      "name": "DeepSeek Reasoner",
+      "cost_per_1m_in": 0.55,
+      "cost_per_1m_out": 2.19,
+      "cost_per_1m_in_cached": 0.14,
+      "cost_per_1m_out_cached": 0.14,
+      "context_window": 64000,
+      "default_max_tokens": 8000,
+      "can_reason": true,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "deepseek-chat",
+      "name": "DeepSeek Chat",
+      "cost_per_1m_in": 0.14,
+      "cost_per_1m_out": 0.28,
+      "cost_per_1m_in_cached": 0.014,
+      "cost_per_1m_out_cached": 0.028,
+      "context_window": 64000,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "deepseek-coder",
+      "name": "DeepSeek Coder",
+      "cost_per_1m_in": 0.14,
+      "cost_per_1m_out": 0.28,
+      "cost_per_1m_in_cached": 0.014,
+      "cost_per_1m_out_cached": 0.028,
+      "context_window": 64000,
+      "default_max_tokens": 8000,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    }
+  ]
+}
