@@ -22,11 +22,13 @@
 
 Crabrace is a **centralized registry service** for AI inference providers (LLMs) and their models. It provides:
 
-- ✅ **Provider Metadata** - Up-to-date information about 16+ AI providers
-- ✅ **Model Information** - Costs, capabilities, context windows
+- ✅ **Provider Metadata** - Up-to-date information about 16 AI providers
+- ✅ **Model Information** - Costs, capabilities, context windows for 341+ models
 - ✅ **RESTful API** - Simple HTTP endpoints for querying
-- ✅ **Auto-Updates** - Nightly provider information updates
-- ✅ **Observable** - Built-in Prometheus metrics
+- ✅ **Production Ready** - Docker, configuration management, monitoring
+- ✅ **Observable** - Built-in Prometheus metrics with Grafana dashboards
+- ✅ **Flexible Config** - Environment variables, TOML files, or both
+- ✅ **Secure** - Non-root containers, minimal attack surface
 
 ---
 
@@ -313,12 +315,31 @@ docker-compose down -v
 - ✅ Optimized for production
 - ✅ Minimal dependencies
 
-### Environment Variables
+### Configuration
+
+Crabrace supports flexible configuration via environment variables, configuration files, or both.
+
+**Quick Configuration via Environment Variables:**
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `RUST_LOG` | `info` | Log level (trace, debug, info, warn, error) |
-| `PORT` | `8080` | Server port |
+| `CRABRACE_SERVER__HOST` | `0.0.0.0` | Server bind address |
+| `CRABRACE_SERVER__PORT` | `8080` | Server port |
+| `CRABRACE_LOGGING__LEVEL` | `info` | Log level (trace, debug, info, warn, error) |
+| `CRABRACE_LOGGING__JSON_FORMAT` | `false` | Use JSON logging |
+| `CRABRACE_METRICS__ENABLED` | `true` | Enable metrics endpoint |
+
+**Using Configuration File:**
+```bash
+# Copy and edit example config
+cp config.toml.example config.toml
+nano config.toml
+
+# Run with custom config
+docker run -v $(pwd)/config.toml:/app/config.toml crabrace:latest
+```
+
+See **[Configuration Guide](CONFIGURATION.md)** for complete documentation
 
 ### Build Options
 
@@ -369,12 +390,12 @@ MIT License - see [LICENSE](LICENSE) for details
 
 ## 📊 Status
 
-- **Version:** 0.1.0 (In Development)
-- **Status:** Phase 3 Complete - All Providers Implemented
+- **Version:** 0.1.0 (Release Candidate)
+- **Status:** Phase 4 In Progress - Production Features
 - **API Compatibility:** 100% with Catwalk ✅
 - **Providers:** 16 of 16 (100%) ✅
 - **Models:** 341+ models across all providers
-- **Next:** Production deployment (Phase 4)
+- **Production Ready:** Docker ✅ | Config ✅ | Security ⏳
 
 ### Progress
 
@@ -383,7 +404,17 @@ MIT License - see [LICENSE](LICENSE) for details
 | Phase 1: Data Model | ✅ Complete | 100% |
 | Phase 2: Infrastructure | ✅ Complete | 100% |
 | Phase 3: Providers | ✅ Complete | 100% |
-| Phase 4: Production | ⏳ Pending | 0% |
+| Phase 4: Production | 🔄 In Progress | 60% |
+
+### Phase 4: Production Readiness
+
+| Feature | Status | Notes |
+|---------|--------|-------|
+| Docker Support | ✅ Complete | Multi-stage builds, docker-compose |
+| Configuration Management | ✅ Complete | Env vars, TOML, validation |
+| Security Hardening | ⏳ Planned | CORS, rate limiting, headers |
+| Kubernetes Manifests | ⏳ Planned | Deployment, Service, Ingress |
+| Performance Testing | ⏳ Planned | Load tests, benchmarks |
 
 ---
 
