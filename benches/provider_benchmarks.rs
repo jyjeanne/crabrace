@@ -1,5 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion, BenchmarkId};
 use crabrace::providers::load_providers;
+use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion};
 
 fn bench_load_providers(c: &mut Criterion) {
     c.bench_function("load_providers", |b| {
@@ -62,9 +62,7 @@ fn bench_provider_count(c: &mut Criterion) {
 
     let providers = load_providers();
 
-    group.bench_function("count_providers", |b| {
-        b.iter(|| black_box(providers.len()))
-    });
+    group.bench_function("count_providers", |b| b.iter(|| black_box(providers.len())));
 
     group.bench_function("count_all_models", |b| {
         b.iter(|| {

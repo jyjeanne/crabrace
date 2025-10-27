@@ -1,5 +1,5 @@
-use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use crabrace::CrabraceClient;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 use tokio::runtime::Runtime;
 
 fn bench_client_creation(c: &mut Criterion) {
