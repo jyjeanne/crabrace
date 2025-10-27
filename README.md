@@ -1,5 +1,8 @@
 # Crabrace 🦀
 
+[![Rust](https://github.com/jyjeanne/crabrace/actions/workflows/rust.yml/badge.svg)](https://github.com/jyjeanne/crabrace/actions/workflows/rust.yml)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 **Rust port of Catwalk - AI Provider Database**
 
 ```
