@@ -15,7 +15,7 @@ use tower_http::{
 };
 use tracing::{info, Level};
 
-use crabrace::{metrics, providers::registry::ProviderRegistry, Provider};
+use crabrace::{metrics, providers::registry::ProviderRegistry};
 
 /// Application state shared across handlers
 #[derive(Clone)]
@@ -52,8 +52,8 @@ async fn main() -> Result<()> {
     let addr = SocketAddr::from(([0, 0, 0, 0], 8080));
     info!("Server listening on {}", addr);
 
-    axum::Server::bind(&addr)
-        .serve(app.into_make_service())
+    let listener = tokio::net::TcpListener::bind(addr).await?;
+    axum::serve(listener, app)
         .with_graceful_shutdown(shutdown_signal())
         .await?;
 

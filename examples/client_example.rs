@@ -32,8 +32,8 @@ async fn main() -> Result<()> {
         println!("📦 {} ({})", provider.name, provider.id);
         println!("   Models: {}", provider.models.len());
 
-        if let Some(base_url) = &provider.base_url {
-            println!("   Base URL: {}", base_url);
+        if let Some(api_endpoint) = &provider.api_endpoint {
+            println!("   API Endpoint: {}", api_endpoint);
         }
 
         println!("\n   Available Models:");
@@ -42,7 +42,7 @@ async fn main() -> Result<()> {
             println!("     - Context Window: {} tokens", model.context_window);
             println!(
                 "     - Cost: ${:.2}/1M in, ${:.2}/1M out",
-                model.cost_per_1m_input, model.cost_per_1m_output
+                model.cost_per_1m_in, model.cost_per_1m_out
             );
 
             // Display capabilities
@@ -50,22 +50,16 @@ async fn main() -> Result<()> {
             if model.can_reason {
                 capabilities.push("reasoning");
             }
-            if model.supports_images {
-                capabilities.push("vision");
-            }
-            if model.supports_tools {
-                capabilities.push("tools");
-            }
-            if model.supports_streaming {
-                capabilities.push("streaming");
+            if model.supports_attachments {
+                capabilities.push("vision/attachments");
             }
 
             if !capabilities.is_empty() {
                 println!("     - Capabilities: {}", capabilities.join(", "));
             }
 
-            // Calculate example cost
-            let example_cost = model.calculate_cost(100_000, 50_000);
+            // Calculate example cost (without caching)
+            let example_cost = model.calculate_cost(100_000, 50_000, false);
             println!(
                 "     - Example cost (100k in, 50k out): ${:.4}",
                 example_cost
