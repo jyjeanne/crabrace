@@ -1,0 +1,36 @@
+# Build artifacts
+target/
+Cargo.lock
+
+# Development files
+.git/
+.github/
+.gitignore
+.vscode/
+.idea/
+
+# Documentation
+*.md
+docs/
+BUILD_WORKAROUND.md
+QUICK_START.md
+METRICS.md
+TEST_RESULTS.md
+SESSION_SUMMARY.md
+
+# Test files
+tests/
+benches/
+
+# CI/CD
+.github/
+
+# Docker
+Dockerfile
+.dockerignore
+docker-compose.yml
+
+# Misc
+*.log
+*.tmp
+.DS_Store

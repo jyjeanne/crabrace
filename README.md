@@ -68,6 +68,7 @@ curl http://localhost:8080/metrics
 ## 📚 Documentation
 
 - **[Quick Start](QUICK_START.md)** - Get started quickly
+- **[Docker Deployment](DOCKER_DEPLOYMENT.md)** - Complete Docker guide
 - **[Build Workaround](BUILD_WORKAROUND.md)** - Fix Windows build issues
 - **[Full Specification](docs/CRABRACE_SPECIFICATION.md)** - Complete technical specification
 - **[Metrics Guide](METRICS.md)** - Prometheus metrics documentation
@@ -251,12 +252,87 @@ async fn main() -> anyhow::Result<()> {
 
 ## 🐳 Docker
 
+### Quick Start with Docker
+
 ```bash
-# Build
+# Build the image
 docker build -t crabrace:latest .
 
-# Run
-docker run -p 8080:8080 crabrace:latest
+# Run the container
+docker run -d \
+  --name crabrace \
+  -p 8080:8080 \
+  -e RUST_LOG=info \
+  crabrace:latest
+
+# Check logs
+docker logs -f crabrace
+
+# Test the API
+curl http://localhost:8080/health
+curl http://localhost:8080/providers
+```
+
+### Docker Compose (Recommended)
+
+Run Crabrace with Docker Compose for easier management:
+
+```bash
+# Start Crabrace only
+docker-compose up -d
+
+# Start with monitoring stack (Prometheus + Grafana)
+docker-compose --profile monitoring up -d
+
+# View logs
+docker-compose logs -f crabrace
+
+# Stop services
+docker-compose down
+
+# Stop and remove volumes
+docker-compose down -v
+```
+
+**Access Services:**
+- Crabrace API: http://localhost:8080
+- Prometheus: http://localhost:9090 (monitoring profile)
+- Grafana: http://localhost:3000 (monitoring profile, admin/admin)
+
+### Docker Image Details
+
+**Multi-Stage Build:**
+- Builder stage: Rust 1.75 slim
+- Runtime stage: Debian Bookworm slim
+- Final image size: ~80MB
+
+**Features:**
+- ✅ Non-root user for security
+- ✅ Health checks included
+- ✅ Optimized for production
+- ✅ Minimal dependencies
+
+### Environment Variables
+
+| Variable | Default | Description |
+|----------|---------|-------------|
+| `RUST_LOG` | `info` | Log level (trace, debug, info, warn, error) |
+| `PORT` | `8080` | Server port |
+
+### Build Options
+
+```bash
+# Standard build
+docker build -t crabrace:latest .
+
+# Build with cache disabled
+docker build --no-cache -t crabrace:latest .
+
+# Build for specific platform
+docker build --platform linux/amd64 -t crabrace:latest .
+
+# Multi-platform build
+docker buildx build --platform linux/amd64,linux/arm64 -t crabrace:latest .
 ```
 
 ---

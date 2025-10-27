@@ -1,0 +1,19 @@
+# Prometheus configuration for Crabrace
+global:
+  scrape_interval: 15s
+  evaluation_interval: 15s
+  external_labels:
+    monitor: 'crabrace-monitor'
+
+scrape_configs:
+  # Scrape Crabrace metrics
+  - job_name: 'crabrace'
+    static_configs:
+      - targets: ['crabrace:8080']
+    metrics_path: '/metrics'
+    scrape_interval: 10s
+
+  # Scrape Prometheus itself
+  - job_name: 'prometheus'
+    static_configs:
+      - targets: ['localhost:9090']
