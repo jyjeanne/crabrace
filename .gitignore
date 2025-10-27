@@ -1,0 +1,58 @@
+# Rust build artifacts
+/target/
+/debug/
+/release/
+
+# Cargo lock file (uncomment if building a library)
+# Cargo.lock
+
+# Backup files
+**/*.rs.bk
+*.swp
+*.swo
+*~
+
+# IDE files
+.vscode/
+.idea/
+*.iml
+.DS_Store
+
+# Environment files
+.env
+.env.local
+
+# Log files
+*.log
+
+# Test coverage
+*.profraw
+*.profdata
+/coverage/
+
+# Benchmarking
+/benches/target/
+
+# Documentation build
+/target/doc/
+
+# Flamegraph output
+flamegraph.svg
+perf.data
+perf.data.old
+
+# Python cache (for verify_json.py)
+__pycache__/
+*.pyc
+*.pyo
+
+# Temporary build scripts
+*.bak
+build.bat
+
+# Test output
+test_models.rs
+
+# Claude Code files
+.claude/
+.claudeignore
