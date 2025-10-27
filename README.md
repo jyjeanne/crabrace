@@ -74,6 +74,8 @@ curl http://localhost:8080/metrics
 - **[Security Guide](SECURITY.md)** - Security features and best practices
 - **[Docker Deployment](DOCKER_DEPLOYMENT.md)** - Complete Docker guide
 - **[Kubernetes Deployment](KUBERNETES.md)** - Kubernetes deployment guide
+- **[Performance Testing](PERFORMANCE.md)** - Benchmarking and load testing
+- **[Benchmark Results](BENCHMARK_RESULTS.md)** - Performance metrics
 - **[Build Workaround](BUILD_WORKAROUND.md)** - Fix Windows build issues
 - **[Full Specification](docs/CRABRACE_SPECIFICATION.md)** - Complete technical specification
 - **[Metrics Guide](METRICS.md)** - Prometheus metrics documentation
@@ -416,7 +418,7 @@ MIT License - see [LICENSE](LICENSE) for details
 | Configuration Management | ✅ Complete | Env vars, TOML, validation |
 | Security Hardening | ✅ Complete | CORS, rate limiting, security headers |
 | Kubernetes Manifests | ✅ Complete | kubectl, Kustomize, Helm charts |
-| Performance Testing | ⏳ Optional | Load tests, benchmarks |
+| Performance Testing | ✅ Complete | Criterion benchmarks, load tests |
 
 ---
 
