@@ -1,20 +1,19 @@
 use crabrace::CrabraceClient;
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use tokio::runtime::Runtime;
 
 fn bench_client_creation(c: &mut Criterion) {
     c.bench_function("create_client", |b| {
         b.iter(|| {
-            let client = CrabraceClient::new();
+            let client = CrabraceClient::new("http://localhost:8080");
             black_box(client)
         })
     });
 }
 
-fn bench_client_with_base_url(c: &mut Criterion) {
+fn bench_client_with_custom_url(c: &mut Criterion) {
     c.bench_function("create_client_with_url", |b| {
         b.iter(|| {
-            let client = CrabraceClient::with_base_url("http://localhost:8080");
+            let client = CrabraceClient::new("http://example.com:9090");
             black_box(client)
         })
     });
@@ -51,7 +50,7 @@ fn bench_http_health_check(c: &mut Criterion) {
 criterion_group!(
     benches,
     bench_client_creation,
-    bench_client_with_base_url,
+    bench_client_with_custom_url,
     // bench_http_get_providers,  // Uncomment if server is running
     // bench_http_health_check,   // Uncomment if server is running
 );

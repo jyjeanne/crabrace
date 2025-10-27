@@ -1,17 +1,19 @@
-use crabrace::providers::load_providers;
-use criterion::{black_box, criterion_group, criterion_main, BenchmarkId, Criterion};
+use crabrace::providers::registry::ProviderRegistry;
+use criterion::{black_box, criterion_group, criterion_main, Criterion};
 
 fn bench_load_providers(c: &mut Criterion) {
     c.bench_function("load_providers", |b| {
         b.iter(|| {
-            let providers = load_providers();
+            let registry = ProviderRegistry::new().unwrap();
+            let providers = registry.get_all().unwrap();
             black_box(providers)
         })
     });
 }
 
 fn bench_provider_search(c: &mut Criterion) {
-    let providers = load_providers();
+    let registry = ProviderRegistry::new().unwrap();
+    let providers = registry.get_all().unwrap();
 
     c.bench_function("find_provider_by_id", |b| {
         b.iter(|| {
@@ -22,7 +24,8 @@ fn bench_provider_search(c: &mut Criterion) {
 }
 
 fn bench_model_search(c: &mut Criterion) {
-    let providers = load_providers();
+    let registry = ProviderRegistry::new().unwrap();
+    let providers = registry.get_all().unwrap();
 
     c.bench_function("find_model_across_providers", |b| {
         b.iter(|| {
@@ -35,7 +38,8 @@ fn bench_model_search(c: &mut Criterion) {
 }
 
 fn bench_serialize_providers(c: &mut Criterion) {
-    let providers = load_providers();
+    let registry = ProviderRegistry::new().unwrap();
+    let providers = registry.get_all().unwrap();
 
     c.bench_function("serialize_all_providers", |b| {
         b.iter(|| {
@@ -46,7 +50,8 @@ fn bench_serialize_providers(c: &mut Criterion) {
 }
 
 fn bench_serialize_single_provider(c: &mut Criterion) {
-    let providers = load_providers();
+    let registry = ProviderRegistry::new().unwrap();
+    let providers = registry.get_all().unwrap();
     let provider = providers.first().unwrap();
 
     c.bench_function("serialize_single_provider", |b| {
@@ -60,7 +65,8 @@ fn bench_serialize_single_provider(c: &mut Criterion) {
 fn bench_provider_count(c: &mut Criterion) {
     let mut group = c.benchmark_group("provider_operations");
 
-    let providers = load_providers();
+    let registry = ProviderRegistry::new().unwrap();
+    let providers = registry.get_all().unwrap();
 
     group.bench_function("count_providers", |b| b.iter(|| black_box(providers.len())));
 

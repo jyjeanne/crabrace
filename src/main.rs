@@ -31,14 +31,17 @@ async fn main() -> Result<()> {
     config.validate()?;
 
     // Initialize tracing with configuration
-    let subscriber = tracing_subscriber::fmt()
-        .with_max_level(config.tracing_level())
-        .with_target(config.logging.show_target);
-
     if config.logging.json_format {
-        subscriber.json().init();
+        tracing_subscriber::fmt()
+            .json()
+            .with_max_level(config.tracing_level())
+            .with_target(config.logging.show_target)
+            .init();
     } else {
-        subscriber.init();
+        tracing_subscriber::fmt()
+            .with_max_level(config.tracing_level())
+            .with_target(config.logging.show_target)
+            .init();
     }
 
     info!("Starting Crabrace HTTP server...");
@@ -72,7 +75,11 @@ async fn main() -> Result<()> {
         info!("Metrics endpoint enabled at {}", config.metrics.path);
     }
 
-    app = app.with_state(state).layer(
+    // Add state to router
+    let mut app = app.with_state(state);
+
+    // Add tracing layer
+    app = app.layer(
         TraceLayer::new_for_http()
             .make_span_with(DefaultMakeSpan::new().level(config.tracing_level())),
     );
@@ -119,7 +126,6 @@ async fn main() -> Result<()> {
 
     let listener = tokio::net::TcpListener::bind(addr).await?;
     axum::serve(listener, app)
-        .with_graceful_shutdown(shutdown_signal())
         .await?;
 
     Ok(())

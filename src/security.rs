@@ -130,8 +130,10 @@ mod tests {
 
     #[test]
     fn test_cors_layer_disabled() {
-        let mut config = CorsConfig::default();
-        config.enabled = false;
+        let config = CorsConfig {
+            enabled: false,
+            ..Default::default()
+        };
         assert!(build_cors_layer(&config).is_none());
     }
 
@@ -143,8 +145,10 @@ mod tests {
 
     #[test]
     fn test_rate_limit_layer_disabled() {
-        let mut config = RateLimitConfig::default();
-        config.enabled = false;
+        let config = RateLimitConfig {
+            enabled: false,
+            ..Default::default()
+        };
         // Rate limiting is temporarily disabled, so this always returns None
         let result: Option<()> = build_rate_limit_layer(&config);
         assert!(result.is_none());
@@ -160,8 +164,10 @@ mod tests {
 
     #[test]
     fn test_security_headers_disabled() {
-        let mut config = SecurityHeadersConfig::default();
-        config.enabled = false;
+        let config = SecurityHeadersConfig {
+            enabled: false,
+            ..Default::default()
+        };
         let layers = build_security_headers_layers(&config);
         assert!(layers.is_empty());
     }
