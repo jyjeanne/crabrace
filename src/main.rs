@@ -45,8 +45,7 @@ async fn main() -> Result<()> {
         .with_state(state)
         .layer(CompressionLayer::new())
         .layer(
-            TraceLayer::new_for_http()
-                .make_span_with(DefaultMakeSpan::new().level(Level::INFO)),
+            TraceLayer::new_for_http().make_span_with(DefaultMakeSpan::new().level(Level::INFO)),
         );
 
     // Start server
@@ -111,7 +110,11 @@ async fn metrics_handler() -> Response {
             .into_response(),
         Err(e) => {
             tracing::error!("Failed to encode metrics: {}", e);
-            (StatusCode::INTERNAL_SERVER_ERROR, "Failed to encode metrics").into_response()
+            (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                "Failed to encode metrics",
+            )
+                .into_response()
         }
     }
 }

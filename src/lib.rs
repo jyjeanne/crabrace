@@ -115,10 +115,7 @@ impl CrabraceClient {
         let response = self.http_client.get(&url).send().await?;
 
         if !response.status().is_success() {
-            anyhow::bail!(
-                "Failed to get providers: HTTP {}",
-                response.status()
-            );
+            anyhow::bail!("Failed to get providers: HTTP {}", response.status());
         }
 
         let providers: Vec<Provider> = response.json().await?;

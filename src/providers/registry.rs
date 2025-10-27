@@ -72,11 +72,7 @@ impl ProviderRegistry {
 
     /// Get the total number of models across all providers
     pub fn model_count(&self) -> usize {
-        self.providers
-            .read()
-            .iter()
-            .map(|p| p.models.len())
-            .sum()
+        self.providers.read().iter().map(|p| p.models.len()).sum()
     }
 }
 
