@@ -138,9 +138,22 @@ mod tests {
 
         // Check that all expected providers are present
         let expected_providers = vec![
-            "anthropic", "openai", "gemini", "azure", "bedrock",
-            "vertexai", "xai", "zai", "groq", "openrouter",
-            "cerebras", "venice", "chutes", "deepseek", "huggingface", "aihubmix"
+            "anthropic",
+            "openai",
+            "gemini",
+            "azure",
+            "bedrock",
+            "vertexai",
+            "xai",
+            "zai",
+            "groq",
+            "openrouter",
+            "cerebras",
+            "venice",
+            "chutes",
+            "deepseek",
+            "huggingface",
+            "aihubmix",
         ];
 
         assert_eq!(providers.len(), expected_providers.len());
