@@ -72,12 +72,10 @@ async fn main() -> Result<()> {
         info!("Metrics endpoint enabled at {}", config.metrics.path);
     }
 
-    app = app
-        .with_state(state)
-        .layer(
-            TraceLayer::new_for_http()
-                .make_span_with(DefaultMakeSpan::new().level(config.tracing_level())),
-        );
+    app = app.with_state(state).layer(
+        TraceLayer::new_for_http()
+            .make_span_with(DefaultMakeSpan::new().level(config.tracing_level())),
+    );
 
     // Add security middleware layers
 

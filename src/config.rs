@@ -175,18 +175,11 @@ fn default_cors_origins() -> Vec<String> {
 }
 
 fn default_cors_methods() -> Vec<String> {
-    vec![
-        "GET".to_string(),
-        "POST".to_string(),
-        "OPTIONS".to_string(),
-    ]
+    vec!["GET".to_string(), "POST".to_string(), "OPTIONS".to_string()]
 }
 
 fn default_cors_headers() -> Vec<String> {
-    vec![
-        "Content-Type".to_string(),
-        "Authorization".to_string(),
-    ]
+    vec!["Content-Type".to_string(), "Authorization".to_string()]
 }
 
 fn default_cors_max_age() -> u64 {
@@ -301,8 +294,8 @@ impl Config {
         builder = builder.add_source(config::Config::try_from(&Config::default())?);
 
         // Load from config file if it exists
-        let config_file = std::env::var("CRABRACE_CONFIG")
-            .unwrap_or_else(|_| "config.toml".to_string());
+        let config_file =
+            std::env::var("CRABRACE_CONFIG").unwrap_or_else(|_| "config.toml".to_string());
 
         if Path::new(&config_file).exists() {
             builder = builder.add_source(config::File::with_name(&config_file));
