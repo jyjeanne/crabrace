@@ -1,0 +1,82 @@
+{
+  "name": "LM Studio",
+  "id": "lmstudio",
+  "type": "openai",
+  "api_key": "",
+  "api_endpoint": "http://localhost:1234/v1",
+  "default_large_model_id": "local-model",
+  "default_small_model_id": "local-model",
+  "default_headers": null,
+  "models": [
+    {
+      "id": "local-model",
+      "name": "Local Model",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": 0.0,
+      "cost_per_1m_out_cached": 0.0,
+      "context_window": 32768,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "llama-3.1-8b-instruct",
+      "name": "Llama 3.1 8B Instruct",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": 0.0,
+      "cost_per_1m_out_cached": 0.0,
+      "context_window": 128000,
+      "default_max_tokens": 8192,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "mistral-7b-instruct",
+      "name": "Mistral 7B Instruct",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": 0.0,
+      "cost_per_1m_out_cached": 0.0,
+      "context_window": 32768,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "phi-3-mini",
+      "name": "Phi-3 Mini",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": 0.0,
+      "cost_per_1m_out_cached": 0.0,
+      "context_window": 128000,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    },
+    {
+      "id": "qwen-2.5-coder",
+      "name": "Qwen 2.5 Coder",
+      "cost_per_1m_in": 0.0,
+      "cost_per_1m_out": 0.0,
+      "cost_per_1m_in_cached": 0.0,
+      "cost_per_1m_out_cached": 0.0,
+      "context_window": 32768,
+      "default_max_tokens": 4096,
+      "can_reason": false,
+      "has_reasoning_efforts": false,
+      "default_reasoning_effort": null,
+      "supports_attachments": false
+    }
+  ]
+}

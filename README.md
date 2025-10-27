@@ -22,8 +22,8 @@
 
 Crabrace is a **centralized registry service** for AI inference providers (LLMs) and their models. It provides:
 
-- ✅ **Provider Metadata** - Up-to-date information about 16 AI providers
-- ✅ **Model Information** - Costs, capabilities, context windows for 341+ models
+- ✅ **Provider Metadata** - Up-to-date information about 18 AI providers
+- ✅ **Model Information** - Costs, capabilities, context windows for 354+ models
 - ✅ **RESTful API** - Simple HTTP endpoints for querying
 - ✅ **Production Ready** - Docker, Kubernetes, configuration management
 - ✅ **Observable** - Built-in Prometheus metrics with Grafana dashboards
@@ -253,7 +253,9 @@ crabrace/
 
 ## 📦 Supported Providers
 
-**All 16 Providers Implemented:**
+**All 18 Providers Implemented:**
+
+### Cloud Providers
 - ✅ Anthropic (Claude)
 - ✅ OpenAI (GPT)
 - ✅ Google Gemini
@@ -270,6 +272,10 @@ crabrace/
 - ✅ DeepSeek
 - ✅ HuggingFace
 - ✅ AIHubMix
+
+### Local Providers
+- ✅ **Ollama** - Run LLMs locally (Llama, Mistral, Phi, etc.)
+- ✅ **LM Studio** - Desktop app for local LLM inference
 
 ---
 
@@ -440,8 +446,8 @@ MIT License - see [LICENSE](LICENSE) for details
 - **Version:** 0.1.0 (Release Candidate)
 - **Status:** Phase 4 Complete - Production Ready
 - **API Compatibility:** 100% with Catwalk ✅
-- **Providers:** 16 of 16 (100%) ✅
-- **Models:** 341+ models across all providers
+- **Providers:** 18 (16 cloud + 2 local) ✅
+- **Models:** 354+ models across all providers
 - **Production Ready:** Docker ✅ | Config ✅ | Security ✅ | K8s ✅
 
 ### Progress

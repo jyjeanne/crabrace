@@ -21,6 +21,8 @@ const CHUTES_CONFIG: &str = include_str!("configs/chutes.json");
 const DEEPSEEK_CONFIG: &str = include_str!("configs/deepseek.json");
 const HUGGINGFACE_CONFIG: &str = include_str!("configs/huggingface.json");
 const AIHUBMIX_CONFIG: &str = include_str!("configs/aihubmix.json");
+const OLLAMA_CONFIG: &str = include_str!("configs/ollama.json");
+const LMSTUDIO_CONFIG: &str = include_str!("configs/lmstudio.json");
 
 /// Provider registry that manages all available AI providers
 pub struct ProviderRegistry {
@@ -70,6 +72,8 @@ impl ProviderRegistry {
         load_provider!(DEEPSEEK_CONFIG, "DeepSeek");
         load_provider!(HUGGINGFACE_CONFIG, "HuggingFace");
         load_provider!(AIHUBMIX_CONFIG, "AIHubMix");
+        load_provider!(OLLAMA_CONFIG, "Ollama");
+        load_provider!(LMSTUDIO_CONFIG, "LM Studio");
 
         Ok(())
     }
@@ -127,8 +131,8 @@ mod tests {
     #[test]
     fn test_provider_count() {
         let registry = ProviderRegistry::new().unwrap();
-        // Should have 16 providers loaded
-        assert_eq!(registry.count(), 16);
+        // Should have 18 providers loaded (16 original + Ollama + LM Studio)
+        assert_eq!(registry.count(), 18);
     }
 
     #[test]
@@ -154,6 +158,8 @@ mod tests {
             "deepseek",
             "huggingface",
             "aihubmix",
+            "ollama",
+            "lmstudio",
         ];
 
         assert_eq!(providers.len(), expected_providers.len());
