@@ -5,7 +5,7 @@ use std::path::Path;
 use tracing::Level;
 
 /// Application configuration
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct Config {
     /// Server configuration
     pub server: ServerConfig,
@@ -69,7 +69,7 @@ pub struct MetricsConfig {
 }
 
 /// Security configuration
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default)]
 pub struct SecurityConfig {
     /// CORS configuration
     pub cors: CorsConfig,
@@ -194,16 +194,6 @@ fn default_rate_limit_period() -> u64 {
     60
 }
 
-impl Default for Config {
-    fn default() -> Self {
-        Self {
-            server: ServerConfig::default(),
-            logging: LoggingConfig::default(),
-            metrics: MetricsConfig::default(),
-            security: SecurityConfig::default(),
-        }
-    }
-}
 
 impl Default for ServerConfig {
     fn default() -> Self {
@@ -235,15 +225,6 @@ impl Default for MetricsConfig {
     }
 }
 
-impl Default for SecurityConfig {
-    fn default() -> Self {
-        Self {
-            cors: CorsConfig::default(),
-            rate_limit: RateLimitConfig::default(),
-            headers: SecurityHeadersConfig::default(),
-        }
-    }
-}
 
 impl Default for CorsConfig {
     fn default() -> Self {
