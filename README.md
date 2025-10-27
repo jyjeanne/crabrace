@@ -28,7 +28,7 @@ Crabrace is a **centralized registry service** for AI inference providers (LLMs)
 - ✅ **Production Ready** - Docker, Kubernetes, configuration management
 - ✅ **Observable** - Built-in Prometheus metrics with Grafana dashboards
 - ✅ **Flexible Config** - Environment variables, TOML files, or both
-- ✅ **Secure** - CORS, rate limiting, security headers, non-root containers
+- ✅ **Secure** - CORS, security headers, non-root containers
 - ✅ **High Performance** - 25k+ req/s, <15ms P99 latency, comprehensive benchmarks
 
 ---
@@ -459,9 +459,11 @@ MIT License - see [LICENSE](LICENSE) for details
 |---------|--------|-------|
 | Docker Support | ✅ Complete | Multi-stage builds, docker-compose |
 | Configuration Management | ✅ Complete | Env vars, TOML, validation |
-| Security Hardening | ✅ Complete | CORS, rate limiting, security headers |
+| Security Hardening | ✅ Complete | CORS, security headers (rate limiting: TODO) |
 | Kubernetes Manifests | ✅ Complete | kubectl, Kustomize, Helm charts |
 | Performance Testing | ✅ Complete | Criterion benchmarks, load tests |
+
+**Note:** Rate limiting is temporarily disabled due to `tower_governor` 0.4.3 type compatibility issues. Will be re-enabled after upgrading to version 0.8.0+.
 
 ---
 
